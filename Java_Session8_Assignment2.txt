@@ -1,0 +1,53 @@
+2. A Java program to generate a user-defined exception called NegativeAgeException if user inputs negative value for age :
+
+class AgeIsNegativeException extends Exception
+{
+    String errorMessage;
+ 
+    public AgeIsNegativeException(String errorMessage)
+    {
+        this.errorMessage = errorMessage;
+    }
+  
+    @Override
+    public String toString()
+    {
+        return errorMessage;
+    }
+}
+
+import java.util.Scanner;
+
+public class negativeAge {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		 Scanner sc = new Scanner(System.in);  //Declaring Scanner variable to take input from user
+		 
+         System.out.println("Enter Your Age");
+
+         int age = sc.nextInt();         //Taking input from user
+
+         try
+         {
+             if(age < 0)
+             {
+                 throw new AgeIsNegativeException ("Age can not be negative");    //throws AgeIsNegativeException if age is negative
+             }
+         }
+         catch(AgeIsNegativeException ex)
+         {
+             System.out.println(ex);    //Output : Age can not be negative
+         }
+     }	
+}
+
+
+Result :
+
+Enter Your Age
+-30
+Age can not be negative
+
